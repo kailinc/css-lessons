@@ -389,3 +389,48 @@ Source: [CSS Animation Tutorial #9 - Animation Shorthand](https://www.youtube.co
 
 
 Source: [CSS Animation Tutorial #10 - Chaining Animations](https://www.youtube.com/watch?v=B0tClxmu_IQ)
+
+
+## CSS Animation Tutorial #11 - Animating a Pop - up
+
+-   The animation we are going for is a pop up dropped from the top of the screen
+-   you can create a bouncy effect by having a state going over a movement, the state after that would limit the movement
+-   ex:
+  -    for drop animation at 70%, the element drops 700px down
+  -    at 100% the element drops down 650px
+  -    this makes it look like it dropped and bounced back
+
+```css
+/*// POP-UP ANIMATION STYLES //*/
+#pop-up {
+  top: -400px;
+  transform-origin: 10px 10px;
+  animation: drop 0.5s ease forwards,
+             swing 2s 0.5s ease forwards;
+}
+
+  @keyframes drop {
+    0%{
+      opacity: 0;
+    }
+
+    70%{
+      transform: translateY(700px);
+    }
+
+    100%{
+      opacity: 1;
+      transform: translateY(650px);
+    }
+  }
+
+  @keyframes swing {
+    /*have to explicitly put the starting point so that it is consistent*/
+    0% { transform: translateY(650px) rotateZ(0deg);}
+    40% { transform: translateY(650px) rotateZ(90deg);}
+    70% { transform: translateY(650px) rotateZ(70deg);}
+    100% { transform: translateY(650px) rotateZ(75deg);}
+
+  }
+```
+Source: [CSS Animation Tutorial #11 - Animating a Pop - up](https://www.youtube.com/watch?v=B0_M1y4aFAQ&t=5s)
