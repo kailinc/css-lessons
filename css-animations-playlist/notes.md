@@ -495,3 +495,82 @@ Button Listener in HTML page
 ```
 
 Source: [CSS Animation Tutorial #12 - Animating a Shopping Cart](https://www.youtube.com/watch?v=ZQhR5RbJ2sk)
+
+
+## CSS Animation Tutorial #13 - Flipping Cards Animation
+
+Animation We Going For:
+-   When a user hovers over a card, the card rotates and the back side of the card appears
+
+
+How to Implement it:
+  1. There needs to be element for "front" of card and for "back" of card
+  2. You rotate the back cards around the Y axis 90 degrees. This is for 2 reasons. Since it is a 2D element, the user can't see it. It will bump the element up to be "behind" the front card. The other reason, is that when the front card rotates, the back card can continue after front card rotates 90 degrees. this will make the animation more smooth
+  3. you need to create an animation that rotates the cards
+  4. you can reverse the animation for back cards because it is the same thing
+
+This is the cards
+```html
+<div class="wrapper">
+  <h1>Pick a Card</h1>
+  <ul class="panels">
+    <li>
+      <div class="front" style="background: #267df4">Hello</div>
+      <div class="back" style="background: #4c8fea">World</div>
+    </li>
+    <li>
+      <div class="front" style="background: #9126f4">Get to</div>
+      <div class="back" style="background: #a144f7">The chopper</div>
+    </li>
+    <li>
+      <div class="front" style="background: #21bf3b">foo</div>
+      <div class="back" style="background: #4dd763">bar</div>
+    </li>
+    <li>
+      <div class="front" style="background: #c3333d">tempus</div>
+      <div class="back" style="background: #e74853">fugit</div>
+    </li>
+    <li>
+      <div class="front" style="background: #c3333d">html</div>
+      <div class="back" style="background: #e74853">rocks</div>
+    </li>
+    <li>
+      <div class="front" style="background: #21bf3b">A</div>
+      <div class="back" style="background: #4dd763">B</div>
+    </li>
+    <li>
+      <div class="front" style="background: #9126f4">Super</div>
+      <div class="back" style="background: #a144f7">Mariokart</div>
+    </li>
+    <li>
+      <div class="front" style="background: #267df4">j</div>
+      <div class="back" style="background: #4c8fea">Query</div>
+    </li>
+  </ul>
+</div>
+```
+
+```css
+.panels div.back {
+  transform: rotateY(90deg);
+}
+
+.panels div.front {
+  position: absolute;
+}
+
+.panels li:hover div.front{
+  animation: twirl 0.2s ease-in forwards;
+}
+
+.panels li:hover div.back{
+  animation: twirl 0.2s 0.2s ease-out forwards reverse;
+}
+
+@keyframes twirl {
+  0%{ transform: rotateY(0deg) }
+  100%{ transform: rotateY(90deg) }
+}
+```
+
+Source: [CSS Animation Tutorial #13 - Flipping Cards Animation](https://www.youtube.com/watch?v=QhKdOrOh90w)
