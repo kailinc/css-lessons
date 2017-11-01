@@ -129,3 +129,29 @@ header:after{
 }
 
 /*// BASKET ANIMATION STYLES //*/
+
+.zoom{
+  position: absolute;
+  top: 40px;
+  right: 50%;
+  width: 40px;
+  animation: slide 1s ease forwards;
+}
+
+@keyframes slide {
+  0%{ opacity: 0; }
+  50%{ opacity: 1; }
+  100%{ opacity: 0; right: 40px;}
+}
+
+.addItem{
+  animation: shake 0.5s 1s;
+}
+
+@keyframes shake {
+  0% { transform: rotateZ(0deg)}
+  25% { transform: rotateZ(20deg)}
+  50% { transform: rotateZ(-20deg)}
+  75% { transform: rotateZ(20deg)}
+  100% { transform: rotateZ(-20deg)}
+}

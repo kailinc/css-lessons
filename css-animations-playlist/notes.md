@@ -434,3 +434,64 @@ Source: [CSS Animation Tutorial #10 - Chaining Animations](https://www.youtube.c
   }
 ```
 Source: [CSS Animation Tutorial #11 - Animating a Pop - up](https://www.youtube.com/watch?v=B0_M1y4aFAQ&t=5s)
+
+
+## CSS Animation Tutorial #12 - Animating a Shopping Cart
+
+Animation:
+-   when a user adds an item to basket, an img will appear at the top and slide into the basket
+-   then the basket will wiggle
+
+  Steps:
+    1. You need a button listener for add to basket
+    2. You will need to clone img of the item and put it on the top of the page
+    3. You will need animation "slide" that makes the img appear and slide into the shopping cart
+    4. Once the img gets to the shopping cart, the cart will need to wiggle
+
+Button Listener in HTML page
+```html
+<script>
+  $("button").on("click", function() {
+    $(this).closest('li')
+      .find("img")
+      .clone()
+      .addClass("zoom")
+      .appendTo("body");
+    $('.basket-icon').addClass('addItem')
+    setTimeout(function(){
+        $(".zoom").remove();
+        $('.basket-icon').removeClass('addItem')
+      }, 2000);
+    })
+</script>
+```
+
+```css
+.zoom{
+  position: absolute;
+  top: 40px;
+  right: 50%;
+  width: 40px;
+  animation: slide 1s ease forwards;
+}
+
+@keyframes slide {
+  0%{ opacity: 0; }
+  50%{ opacity: 1; }
+  100%{ opacity: 0; right: 40px;}
+}
+
+.addItem{
+  animation: shake 0.5s 1s;
+}
+
+@keyframes shake {
+  0% { transform: rotateZ(0deg)}
+  25% { transform: rotateZ(20deg)}
+  50% { transform: rotateZ(-20deg)}
+  75% { transform: rotateZ(20deg)}
+  100% { transform: rotateZ(-20deg)}
+}
+```
+
+Source: [CSS Animation Tutorial #12 - Animating a Shopping Cart](https://www.youtube.com/watch?v=ZQhR5RbJ2sk)

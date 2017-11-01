@@ -42,6 +42,17 @@
     </li>
   </ul>
   <script>
-    
+    $("button").on("click", function() {
+      $(this).closest('li')
+        .find("img")
+        .clone()
+        .addClass("zoom")
+        .appendTo("body");
+      $('.basket-icon').addClass('addItem')
+      setTimeout(function(){
+          $(".zoom").remove();
+          $('.basket-icon').removeClass('addItem')
+        }, 2000);
+      })
   </script>
 </body>
